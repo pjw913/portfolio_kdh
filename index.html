@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-POP DEMON HUNTERS</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body{ 
+      background: linear-gradient(135deg, #1b1b2f 0%, #2a2a48 70%, #ff007f 95%); color: #fff; font-family: 'Audiowide'; letter-spacing: 3px; 
+    }
+    body::before{
+      content:""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: url('https://www.transparenttextures.com/patterns/escheresque.png');
+      opacity: 0.8; animation: noiseAnim 0.3s steps(3) infinite; mix-blend-mode: soft-light; z-index: 9999;
+    }
+    @keyframes noiseAnim {
+      0%, 100% { background-position: 0 0; }
+      50% { background-position: 100% 100%; }
+    }
+    h1{ display: block; width: 372px; height: 46px; object-fit: cover; margin: 50px auto; }
+    .loop-slide{
+        width: 100%; height: 800px; text-align: center; margin-top: 100px;
+    }
+    .loop-slide > .loop-slide-container{
+        width: 600px; margin: 20px auto; overflow: hidden; border: 4px solid #ff007f;
+    }
+    .loop-slide > .loop-slide-container > .loop-slide-wrapper{
+        display: flex; /* justify-content: center; */ align-items: center; 
+        transition: transform 0.5s ease-in-out;
+    }
+    .loop-slide > .loop-slide-container > .loop-slide-wrapper > .loop-slide-item{
+        width: 600px; flex-shrink: 0; height: 300px; line-height: 300px; font-size: 24px;
+        background: url('./image/huntrics.png') no-repeat center center; background-size: cover;
+    }
+    .loop-slide > .loop-slide-container > .loop-slide-wrapper > .loop-slide-item:nth-child(2){ background-image: url('./image/sajaboys.png'); }
+    .loop-slide > .loop-slide-container > .loop-slide-wrapper > .loop-slide-item:nth-child(3){ background-image: url('./image/duppy.jpg'); }
+    .loop-slide > .loop-slide-container > .loop-slide-wrapper > .loop-slide-item:nth-child(4){ background-image: url('./image/guima.png'); }
+    .loop-slide-controls{
+        width:80%;  max-width:600px;   margin:0 auto;  
+        display:flex;   justify-content:space-between; align-items: center;  
+    }
+    .loop-slide-controls>button{
+        cursor:pointer;   padding:5px 14px; text-align: center; font-family: 'Audiowide'; font-size: 15px;
+        transition:background-color 0.2s; color: #fff; background-color:#ff007f;  border-radius: 8px; border: 0px none;
+    }
+    .loop-slide-controls>button:hover{   background-color:#a020f0;  }
+    .loop-slide-controls > .paginationloop{
+      display: flex; flex-flow: row wrap; gap: 10px; align-items: center;
+    }
+    .loop-slide-controls > .paginationloop > .dot{
+      display: block; width: 10px; height: 10px; border-radius: 50%; cursor: pointer; background-color: #343b61;
+    }
+    .loop-slide-controls > .paginationloop > .dot.active{
+      background-color: #4aa8d8;
+    }
+
+    .vertical-slide{
+      width: 100%; height: 800px; text-align: center;
+    }
+    .vertical-slide > .vertical-container{
+      width: 600px; height: 300px; margin: 20px auto; overflow: hidden; border: 4px solid #5126f9;
+    }
+    .vertical-slide > .vertical-container > .vertical-wrapper{
+      display: flex; flex-flow: column wrap; justify-content: center;
+        transition: transform 0.5s ease-in-out;
+    }
+    .vertical-slide > .vertical-container > .vertical-wrapper > .vertical-item{
+      width: 600px; flex-shrink: 0; height: 300px; line-height: 300px; font-size: 24px;
+      background: url('./image/golden.jpg') no-repeat center center; background-size: cover;
+    }
+    .vertical-slide > .vertical-container > .vertical-wrapper > .vertical-item:nth-child(2){ background-image: url('./image/youridol.jpg'); }
+    .vertical-slide > .vertical-container > .vertical-wrapper > .vertical-item:nth-child(3){ background-image: url('./image/howits.jpg'); }
+    .vertical-slide > .vertical-container > .vertical-wrapper > .vertical-item:nth-child(4){ background-image: url('./image/sodapop.jpg'); }
+    .vertical-controls{
+      width:80%;  max-width:600px;   margin:0 auto;  
+      display:flex;   justify-content:space-between;
+    }
+    .vertical-controls > button{
+      cursor:pointer;   padding:5px 14px; text-align: center; font-family: 'Audiowide'; font-size: 15px;
+        transition:background-color 0.2s; color: #fff; background-color:#ff007f;  border-radius: 8px; border: 0px none;
+    }
+    .vertical-controls > button:hover{ background-color:#a020f0; }
+    .paginationV{
+      display: flex; flex-flow: row wrap; gap: 10px; align-items: center;
+    }
+    .paginationV > .dot{
+      display: block; width: 10px; height: 10px; border-radius: 50%; cursor: pointer; background-color: #343b61;
+    }
+    .paginationV > .dot.active{
+      background-color: #4aa8d8;
+    }
+
+
+    .lv-slide{
+      width: 100%; height: 800px; text-align: center; position: relative;
+    }
+    .lv-slide > .lv-container{
+      width: 600px; height: 300px; margin: 20px auto; overflow: hidden; border: 4px solid #5126f9;
+      display: flex; flex-flow: row wrap; align-items: center; 
+      position: relative;
+    }
+    .lv-slide > .lv-container > .lv-item{
+      width: 600px; flex-shrink: 0; height: 300px; line-height: 300px; font-size: 24px;
+      background: url('./image/duppy2.gif') no-repeat center center; background-size: cover; position: absolute; transition: transform 0.5s ease-in-out;
+    }
+    .lv-slide > .lv-container > .lv-item:nth-child(2) > .myvideo{ object-fit: cover; width: 100%; height: 100%; display: block; }
+    .lv-slide > .lv-container > .lv-item:nth-child(3){ background-image: url('./image/kimbob.jpg'); }
+    .lv-slide > .lv-container > .lv-item:nth-child(4){ background-image: url('./image/namsan.png'); }
+    .lv-controls{
+      width:80%;  max-width:600px;   margin:0 auto;  
+      display:flex;   justify-content:space-between;
+    }
+    .lv-controls > button{
+      cursor:pointer;   padding:5px 14px; text-align: center; font-family: 'Audiowide'; font-size: 15px;
+        transition:background-color 0.2s; color: #fff; background-color:#ff007f;  border-radius: 8px; border: 0px none;
+    }
+    .lv-controls > button:hover{ background-color:#a020f0; }
+
+    .lv-slide > .lv-container > .lv-vertical-slider{
+      width: 600px; height: 300px; overflow: hidden;
+      display: flex; flex-flow: row wrap; justify-content: center; 
+    }
+    .lv-vertical-item{
+      width: 600px; height: 300px; flex-shrink: 0; line-height: 300px; font-size: 24px; transition: transform 0.5s ease-in-out;
+      background-size: cover;
+    }
+    .lv-vertical-item:nth-child(2){ background-image: url('./image/motive_duppy.jpg'); }
+    .lv-vertical-item:nth-child(3){ background-image: url('./image/andong_motive.jpg');}
+    .lv-vertical-item:nth-child(4){ background-image: url('./image/namsan2.png'); }
+
+    .pagination{
+      display: flex; flex-flow: column wrap; position: absolute; right: 20px; gap: 10px; align-items: center;
+      top: 50%; transform: translateY(-50%);
+    }
+    .pagination > .dot{
+      display: block; width: 10px; height: 10px; border-radius: 50%; cursor: pointer; background-color: #343b61;
+    }
+    .pagination > .dot.active{
+      background-color: #4aa8d8;
+    }
+  </style>
+</head>
+<body>
+  <h1><img src="./image/logo.png" /></h1>
+    <section class="loop-slide">
+        <h2>CHARACTER</h2>
+        <div class="loop-slide-container">
+            <div class="loop-slide-wrapper">
+                <div class="loop-slide-item"></div>
+                <div class="loop-slide-item"></div>
+                <div class="loop-slide-item"></div>
+                <div class="loop-slide-item"></div>
+            </div>
+        </div>
+        <div class="loop-slide-controls">
+            <button id="prev">PREV</button>
+            <div class="paginationloop">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button id="next">NEXT</button>
+        </div>
+    </section>
+    <section class="vertical-slide">
+        <h2>HIT SONGS</h2>
+        <div class="vertical-container">
+            <div class="vertical-wrapper">
+                <div class="vertical-item"></div>
+                <div class="vertical-item"></div>
+                <div class="vertical-item"></div>
+                <div class="vertical-item"></div>
+                
+            </div>
+        </div>
+        <div class="vertical-controls">
+            <button id="prev-btn">PREV</button>
+            <div class="paginationV">
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+              </div>
+            <button id="next-btn">NEXT</button>
+        </div>
+    </section>
+    <section class="lv-slide">
+        <h2>KOREAN CULTURE & MOTIVE</h2>
+        <div class="lv-container">
+                <div class="lv-item"></div>
+                <div class="lv-item"><video class="myvideo" autoplay muted loop playsinline><source src="./image/andong.mp4" /></video></div>
+                <div class="lv-item lv-vertical-slider">
+                  <div class="slide-inner">
+                    <div class="lv-vertical-item"></div>
+                    <div class="lv-vertical-item"></div>
+                    <div class="lv-vertical-item"></div>
+                    <div class="lv-vertical-item"></div>
+                  </div>
+                  <div class="pagination">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>  
+                </div>
+                <div class="lv-item"></div>
+        </div>
+        
+        <div class="lv-controls">
+            <button id="prevBtn">PREV</button>
+            <button id="nextBtn">NEXT</button>
+        </div>
+    </section>
+    <script>
+        const slideWrapper = document.querySelector('.loop-slide-wrapper');
+        const prevBtn = document.querySelector('#prev');
+        const nextBtn = document.querySelector('#next');
+        
+
+        const firstClone = slideWrapper.firstElementChild.cloneNode(true);
+        const lastClone = slideWrapper.lastElementChild.cloneNode(true);
+      
+        slideWrapper.appendChild(firstClone);
+        slideWrapper.prepend(lastClone);
+
+        let currentIdx = 1;
+        let lastIdx = 0;
+
+        const items = document.querySelectorAll('.loop-slide-item');
+        
+        const totalItem = items.length;
+        console.log(totalItem)
+        const moveX = 600;
+
+        const paginationDots = document.querySelectorAll('.paginationloop .dot');
+
+        const updatePagination = () =>{
+          let pageIdx = currentIdx - 1;
+          if (pageIdx < 0) pageIdx = paginationDots.length - 1;
+          if (pageIdx >= paginationDots.length) pageIdx = 0;
+
+          paginationDots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === pageIdx);
+          });
+        }
+
+        const slidePosition = () => {
+          const movePosition = currentIdx *(-1)*moveX;
+          slideWrapper.style.transform = `translateX(${movePosition}px)`;
+          updatePagination();
+        };
+        slidePosition();
+      
+        slideWrapper.addEventListener('transitionend', () => {
+          if (currentIdx===totalItem-1 ) {
+            slideWrapper.style.transition = 'none';
+            currentIdx = 1;
+            const movePosition = currentIdx *(-1)*moveX;
+            slideWrapper.style.transform = `translateX(${movePosition}px)`;
+            //slideWrapper.style.transform = `translateX(-${moveX}px)`;
+            setTimeout(() => {
+              slideWrapper.style.transition = 'transform 0.5s ease-in-out';
+            }, 20);
+          } else if (currentIdx <= 0) {
+            slideWrapper.style.transition = 'none';
+            currentIdx = totalItem - 2;
+            slideWrapper.style.transform = `translateX(-${currentIdx * moveX}px)`;
+            setTimeout(() => {
+              slideWrapper.style.transition = 'transform 0.5s ease-in-out';
+            }, 20);
+          }
+          updatePagination();
+        });
+
+      
+        nextBtn.addEventListener('click', () => {       
+          if (currentIdx >= totalItem) return;
+            currentIdx++;
+            slidePosition();
+        });
+      
+        prevBtn.addEventListener('click', () => {
+          if (currentIdx <= 0) return;
+          currentIdx--;
+          slidePosition();
+        });
+
+        const verticalWrapper = document.querySelector('.vertical-wrapper');
+        const vprev = document.querySelector('#prev-btn');
+        const vnext = document.querySelector('#next-btn');
+
+        const vfirstClone = verticalWrapper.firstElementChild.cloneNode(true);
+        const vlastClone = verticalWrapper.lastElementChild.cloneNode(true);
+
+        verticalWrapper.appendChild(vfirstClone);
+        verticalWrapper.prepend(vlastClone);
+
+        let curIdx = 1;
+        let lasIdx = 0;
+
+        const vitems = document.querySelectorAll('.vertical-item');
+
+        const total = vitems.length;
+        const moveY = 300;
+
+        const paginationVdots = document.querySelectorAll('.paginationV .dot');
+
+        const updatePaginationV = () =>{
+          let pgIdx = curIdx - 1;
+          if (pgIdx < 0) pgIdx = paginationVdots.length - 1;
+          if (pgIdx >= paginationVdots.length) pageIdx = 0;
+
+          paginationVdots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === pgIdx);
+          });
+        }
+
+        const slideFormation = () =>{
+          const moveFormation = curIdx*(-1)*moveY;
+          verticalWrapper.style.transform = `translateY(${moveFormation}px)`;
+          updatePaginationV();
+        }
+        slideFormation();
+
+        verticalWrapper.addEventListener('transitionend', ()=>{
+          if(curIdx === total - 1){
+            verticalWrapper.style.transition = 'none';
+            curIdx = 1;
+            const moveFormation = curIdx*(-1)*moveY;
+            verticalWrapper.style.transform = `translateY(${moveFormation}px)`;
+            setTimeout(()=>{ verticalWrapper.style.transition = 'transform 0.5s ease-in-out'; }, 20);
+          }else if( curIdx <= 0 ){
+            verticalWrapper.style.transition = 'none';
+            curIdx = total - 2;
+            verticalWrapper.style.transform = `translateY(-${curIdx * moveY}px)`;
+            setTimeout(()=>{ verticalWrapper.style.transition = 'transform 0.5s ease-in-out'; }, 20);
+          }
+          updatePaginationV();
+        });
+
+        vprev.addEventListener('click', ()=>{
+          if (curIdx >= total) return;
+          curIdx--;
+          slideFormation();
+        });
+        vnext.addEventListener('click', ()=>{
+          if (curIdx <= 0) return;
+          curIdx++;
+          slideFormation();         
+        });
+
+        const lvslides = document.querySelectorAll('.lv-item');
+        const lvprev = document.querySelector('#prevBtn');
+        const lvnext = document.querySelector('#nextBtn');
+
+        lvslides.forEach((slide, index)=>{
+          slide.style.left = `${index * 600}px`;
+        });
+
+        let currentIndex = 0;
+
+        const updateButtons = () => {
+          lvprev.disabled = currentIndex === 0;
+          lvnext.disabled = currentIndex === lvslides.length - 1;
+        };
+
+        lvnext.addEventListener('click', ()=>{
+          currentIndex++;
+          carousel();
+        });
+        lvprev.addEventListener('click', ()=>{
+          currentIndex--;
+          carousel();
+        });
+
+        updateButtons();
+
+        const carousel = () =>{
+          if( currentIndex === lvslides.length ){
+            currentIndex = 0;
+          }
+          if( currentIndex < 0 ){
+            currentIndex = lvslides.length - 1;
+          }
+          lvslides.forEach((slide)=>{
+            slide.style.transform = `translateX(-${currentIndex * 600}px)`;
+          });          
+
+          updateButtons();
+        }
+
+        const paginationLvDots = document.querySelectorAll('.pagination .dot');
+
+        const updatePage = () =>{
+          let pageIndex = curvIdx;
+          if (pageIndex < 0) pageIndex = paginationLvDots.length - 1;
+          if (pageIndex >= paginationLvDots.length) pageIndex = 0;
+
+          paginationLvDots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === pageIndex);
+          });
+        }
+
+        const pageClick = () =>{
+          paginationLvDots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            curvIdx = index;
+            carou();
+          });
+        });
+        }
+
+        const lvvslides = document.querySelectorAll('.lv-vertical-item');
+        lvvslides.forEach((slide, index)=>{
+          slide.style.top = `${index * 300}px`;
+        });
+
+        let curvIdx = 0;
+
+        const carou = () =>{
+          if( curvIdx === lvvslides.length ){
+            curvIdx = 0;
+          }
+          if( curvIdx < 0 ){
+            curvIdx = lvvslides.length - 1;
+          }
+          lvvslides.forEach((slide)=>{
+            slide.style.transform = `translateY(-${curvIdx * 300}px)`;
+          });
+
+          updatePage();
+        }
+        pageClick();
+        carou();
+        
+      </script>
+</body>
+
+</html>
